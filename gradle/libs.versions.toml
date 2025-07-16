@@ -1,0 +1,57 @@
+[versions]
+agp = "8.9.0"
+kotlin = "2.0.21"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+ktorClientAndroid = "3.1.3"
+ktorClientCore = "3.1.3"
+ktorUtils = "3.1.3"
+authKt = "3.1.4"
+postgrestKt = "3.1.4"
+storageKt = "3.1.4"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.10.1"
+composeBom = "2025.04.01"
+ciceroneVer = "7.1"
+fragmentKtx = "1.8.6"
+roomRuntimeVer = "2.6.1"
+roomCompilerVer = "2.6.1"
+roomKtxVer = "2.6.1"
+kspVer = "2.0.21-1.0.27"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt", version.ref = "authKt" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+cicerone = {module = "com.github.terrakok:cicerone", version.ref = "ciceroneVer"}
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
+ktor-utils = { module = "io.ktor:ktor-utils", version.ref = "ktorUtils" }
+postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "postgrestKt" }
+room-runtime = {group = "androidx.room", name = "room-runtime", version.ref = "roomRuntimeVer"}
+room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "roomKtxVer"}
+room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "roomCompilerVer"}
+storage-kt = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "storageKt" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = {id = "com.google.devtools.ksp", version.ref = "kspVer"}
+kps = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
+
