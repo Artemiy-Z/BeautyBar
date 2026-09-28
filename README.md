@@ -1,28 +1,73 @@
-# Project Beauty Bar - an Android-compatible App for managing beauty-related businesses
-## Main goals
-When I started this project, I had several goals in mind:
-- polish my programming skills and learn to use Kotlin for Android development;
-- learn how to construct adaptable and interactable user interfaces using Jetpack Compose;
-- learn how to make lightweight, expandable App navigation using Cicerone.
-## Features
-### Admin managing
-Lets administrator create and edit: 
-- categories of services;
-- services;
-- masters that work in certain schedules.
-### User experience
-Common users can sign in and sign up as new users to access such features as:
-- view catalog;
-- read descriptions for any service;
-- edit profile details;
-- book services and specify master they will be working with, date and time;
-- view and cancelling bookings.
-### master experience
-Masters can sign in using login-password that they get from admins, and get access to these features:
-- view bookings that are scheduled to them;
-- edit profile details.
-## Conclusion
-Project's goals have been achieved and I have learned a lot about such technologies as:
-- UI/UX framework Jetpack Compose;
-- Navigation framework Cicerone
-- Database management using Supabase.
+# BeautyBar — приложение для управления салоном красоты и записи на услуги
+Проект разработан для практики проектирования архитектуры Android-приложения,
+создания адаптивных интерфейсов на Jetpack Compose и интеграции с удалённой
+базой данных для авторизации и реализации бизнес-процессов.
+
+## Возможности
+- Управление салоном:
+  администратор может добавлять, редактировать и удалять категории услуг,
+  услуги и профили мастеров.
+- Аутентификация пользователей, мастеров и администраторов.
+- Просмотр каталога услуг.
+- Запись клиента к мастеру на выбранную услугу.
+- Редактирование мастером личных данных и портфолио работ.
+- Просмотр мастером списка записей на свои услуги.
+- Редактирование пользователем личных данных.
+- Просмотр пользователем своих записей.
+
+## Стек
+- Kotlin
+- Android SDK
+- Jetpack Compose - декларативный пользовательский интерфейс
+- Kotlin Coroutines
+- Supabase Kotlin Client - работа с PostgreSQL и хранение данных
+- PostgreSQL
+- Cicerone - навигация между экранами.
+- Coil Compose - асинхронная загрузка изображений
+- Gradle
+- Git
+
+## Архитектура
+Приложение использует слоистую архитектуру с разделением представления, бизнес-логики и работы с данными
+
+Основные слои:
+1) **/database**
+   - **/model Слой модели**: здесь хранятся классы, представляющие модели данных из БД
+   - **/api Слой API**: здесь прописана логика получения и отправки данных на БД
+2) **/dataLayer Промежуточный слой**: содержит необходимые классы совместимости моделей БД с приложением для более удобной реализации обработки данных у клиента
+3) **/navigation**
+   - **/presenter**: здесь для каждого экрана приложения описана логика взаимодействия с данными - именно этот слой запускает методы получения и отправки данных с БД
+   - Также в корне пакета хранится Screens.kt, который описывает какие экраны есть в приложении
+4) **/ui**
+   - **/fragment**: здесь данные приложения отображаются пользователю через пользовательский интерфейс, а также ввод пользователя передается в слой бизнес-логики (нажатие кнопок, загрузка картинок и т.д.)
+   - **/common**: здесь хранятся элементы интерфейса, которые часто используются в разных экранах и нужны для избежания повторения кода
+   - **/theme**: здесь описан внешний вид приложения (цветовая тема, шрифты и т.д.)
+   - Также в корне пакета хранятся: синглтон App.kt для хранения данных для всех экранов, и MainActivity.kt - android-activity для отображения Cicerone-навигатора
+
+> В текущей версии часть общего состояния приложения хранится на уровне
+> application-компонента. В дальнейшем планируется перенести состояние экранов
+> в ViewModel и внедрить dependency injection.
+
+## Инструкция по сборке и запуску:
+1) Клонируйте репозиторий:
+   ```
+   git clone https://github.com/Artemiy-Z/BeautyBar
+   ```
+2) Запустите сборщик Gradle для получения .apk файла:
+   ```
+   cd ./BeautyBar
+   gradlew build
+   ```
+   ИЛИ (если вы на Windows)
+   ```
+   cd ./BeautyBar
+   gradlew.bat
+   ```
+3) Далее в папке /BeautyBar/app/build/outputs/apk/debug:
+   - находим файл app-debug.apk
+   - переносим на телефон
+   - открываем (при необходимости разрешаем в настройках установку из непроверенных источников)
+4) После установки запускаем из меню приложений
+
+## Скриншоты
+<img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/5e836235-5cc2-4df2-b8e8-564475704b3e" /> <img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/389b3ac0-32d9-42d1-9871-eae9489435ae" />
