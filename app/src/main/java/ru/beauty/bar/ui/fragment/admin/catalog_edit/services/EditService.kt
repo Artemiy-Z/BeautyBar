@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.admin.catalog_edit.services;
+package ru.beauty.bar.ui.fragment.admin.catalog_edit.services
 
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -22,10 +22,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import ru.beauty.bar.App
 import ru.beauty.bar.navigation.presenter.admin.catalog_edit.services.EditServicePresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.InputField
+import ru.beauty.bar.ui.common.LargeInputField
+import ru.beauty.bar.ui.common.LoadAsyncImage
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class EditService : BaseFragment() {
@@ -54,7 +57,7 @@ class EditService : BaseFragment() {
         }
 
         BaseScaffoldColumn(
-            backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+            this, backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
             titleText =
                 if (isEditing)
                     "Редактирование услуги"
@@ -92,7 +95,7 @@ class EditService : BaseFragment() {
                 Button(
                     onClick = {
                         presenter.onPictureSelectPressed(
-                            onSelectedListener = {uri ->
+                            onSelectedListener = { uri ->
                                 servicePictureUri.value = uri
                             }
                         )

@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.admin.catalog_edit.categories;
+package ru.beauty.bar.ui.fragment.admin.catalog_edit.categories
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -7,13 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import coil.compose.AsyncImage
-import kotlinx.coroutines.launch
 import ru.beauty.bar.database.model.Category
 import ru.beauty.bar.navigation.presenter.admin.catalog_edit.categories.CatalogEditCategoriesPresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.CardTitleDescription
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class CatalogEditCategories : BaseFragment() {
@@ -21,17 +20,14 @@ class CatalogEditCategories : BaseFragment() {
 
     @Composable
     override fun ComposeFunction() {
-        val scope = rememberCoroutineScope()
-
         loadingBackground = MaterialTheme.colorScheme.tertiaryContainer
         loadingColor = Color.White
 
         BaseScaffoldColumn(
-            backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+            this, backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
             titleText = "Категории услуг",
             onBackButtonClick = { presenter.onBackPressed() },
             content = {
-                val scope = rememberCoroutineScope()
                 val categoriesList = remember { mutableListOf<Category>() }
 
                 val trigger = remember { mutableStateOf(true) }

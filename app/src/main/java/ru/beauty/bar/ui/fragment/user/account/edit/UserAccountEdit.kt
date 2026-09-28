@@ -1,10 +1,7 @@
 package ru.beauty.bar.ui.fragment.user.account.edit
 
 import android.net.Uri
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,9 +9,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -23,17 +17,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import ru.beauty.bar.App
-import ru.beauty.bar.R
 import ru.beauty.bar.database.model.User
-import ru.beauty.bar.navigation.presenter.BasePresenter
 import ru.beauty.bar.navigation.presenter.user.account.edit.UserAccountEditPresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.InputField
+import ru.beauty.bar.ui.common.LoadAsyncImage
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class UserAccountEdit: BaseFragment() {
@@ -57,14 +49,14 @@ class UserAccountEdit: BaseFragment() {
         val passwordNewRepeat = remember { mutableStateOf("") }
 
         BaseScaffoldColumn(
-            titleText = "Ваш аккаунт",
+            this, titleText = "Ваш аккаунт",
             onBackButtonClick = { presenter.onBackPressed() },
             content = {
                 var model: Any? = null
                 if (imageUri.value != null) {
                     model = imageUri.value
-                } else if (user.pictueLink.isNotEmpty()) {
-                    model = user.pictueLink
+                } else if (user.pictureLink.isNotEmpty()) {
+                    model = user.pictureLink
                 }
                 LoadAsyncImage(
                     model = model,
@@ -83,7 +75,7 @@ class UserAccountEdit: BaseFragment() {
                 Button(
                     onClick = {
                         presenter.onPictureSelectPressed { uri: Uri? ->
-                            if(uri != null) {
+                            if (uri != null) {
                                 imageUri.value = uri
                             }
                         }
@@ -124,7 +116,7 @@ class UserAccountEdit: BaseFragment() {
                                 passwordOld = passwordOld.value,
                                 passwordNew = passwordNew.value,
                                 passwordNewRepeat = passwordNewRepeat.value,
-                                imageLink = user.pictueLink,
+                                imageLink = user.pictureLink,
                                 imageUri = imageUri.value
                             )
                         }

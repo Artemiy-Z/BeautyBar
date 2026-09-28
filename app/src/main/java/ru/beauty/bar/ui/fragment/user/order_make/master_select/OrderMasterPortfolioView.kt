@@ -1,42 +1,25 @@
-package ru.beauty.bar.ui.fragment.user.order_make.master_select;
+package ru.beauty.bar.ui.fragment.user.order_make.master_select
 
-import android.net.Uri
-import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.Delete
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
-import coil.compose.AsyncImage
-import kotlinx.coroutines.launch
 import ru.beauty.bar.App
-import ru.beauty.bar.R
 import ru.beauty.bar.dataLayer.UriUrl
 import ru.beauty.bar.navigation.presenter.user.order_make.master_select.OrderMasterPortfolioViewPresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.LoadAsyncImage
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class OrderMasterPortfolioView : BaseFragment() {
@@ -61,8 +44,6 @@ class OrderMasterPortfolioView : BaseFragment() {
             MutableLiveData<SnapshotStateList<UriUrl>>(SnapshotStateList<UriUrl>())
         }
 
-        val scope = rememberCoroutineScope()
-
         LaunchedEffect(Unit) {
             App.INSTANCE.mainInterface.toggleLoading(true)
 
@@ -72,7 +53,7 @@ class OrderMasterPortfolioView : BaseFragment() {
         }
 
         BaseScaffoldColumn(
-            titleText = "Портфолио мастера",
+            this, titleText = "Портфолио мастера",
             onBackButtonClick = {
                 presenter.onBackPressed()
             },
@@ -89,7 +70,7 @@ class OrderMasterPortfolioView : BaseFragment() {
                         imageList.value?.size?.let { it1 ->
                             items(it1) { index: Int ->
                                 val item = imageList.value!![index]
-                                if(item.url.isNotEmpty() || item.uri != null) {
+                                if (item.url.isNotEmpty() || item.uri != null) {
                                     Box {
                                         LoadAsyncImage(
                                             model = item.uri ?: item.url,
@@ -98,8 +79,7 @@ class OrderMasterPortfolioView : BaseFragment() {
                                             contentScale = ContentScale.Fit
                                         )
                                     }
-                                }
-                                else {
+                                } else {
                                     imageList.value?.remove(item)
                                 }
                             }

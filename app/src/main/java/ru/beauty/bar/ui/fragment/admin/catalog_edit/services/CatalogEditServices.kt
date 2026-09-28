@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.admin.catalog_edit.services;
+package ru.beauty.bar.ui.fragment.admin.catalog_edit.services
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
@@ -15,12 +15,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import ru.beauty.bar.App
 import ru.beauty.bar.database.model.Category
 import ru.beauty.bar.database.model.Service
 import ru.beauty.bar.navigation.presenter.admin.catalog_edit.services.CatalogEditServicesPresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.CardTitleDescription
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class CatalogEditServices : BaseFragment() {
@@ -59,7 +59,7 @@ class CatalogEditServices : BaseFragment() {
         }
 
         BaseScaffoldColumn(
-            titleText = "Редактирование услуг",
+            this, titleText = "Редактирование услуг",
             onBackButtonClick = { presenter.onBackPressed() },
             backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
             content = {
@@ -127,7 +127,7 @@ class CatalogEditServices : BaseFragment() {
                     }
                 }
 
-                if(selectedCategory.value != null) {
+                if (selectedCategory.value != null) {
                     Button(
                         onClick = {
                             presenter.onAddPressed(

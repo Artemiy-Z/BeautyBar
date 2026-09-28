@@ -18,7 +18,7 @@ data class User(
     val name: String,
 
     @SerialName("picture")
-    val pictueLink: String
+    val pictureLink: String
 ) {
     override fun toString(): String {
         return "id = $id, login = $login, name = $name"

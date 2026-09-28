@@ -2,7 +2,6 @@ package ru.beauty.bar.navigation.general
 
 import androidx.fragment.app.FragmentFactory
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import ru.beauty.bar.ui.fragment.EmptyFragment
 import ru.beauty.bar.ui.fragment.admin.bookings.AdminBookings
 import ru.beauty.bar.ui.fragment.admin.catalog_edit.CatalogEditOverview
 import ru.beauty.bar.ui.fragment.admin.catalog_edit.categories.CatalogEditCategories
@@ -38,9 +37,6 @@ import ru.beauty.bar.ui.fragment.user.order_make.time_select.OrderTimeSelect
 import ru.beauty.bar.ui.fragment.user.signup.UserSignUp
 
 class Screens {
-    object Empty: FragmentScreen {
-        override fun createFragment(factory: FragmentFactory) = EmptyFragment()
-    }
     object Hello: FragmentScreen {
         override fun createFragment(factory: FragmentFactory) = Hello()
     }

@@ -1,17 +1,14 @@
-package ru.beauty.bar.navigation.presenter.admin.catalog_edit.services;
+package ru.beauty.bar.navigation.presenter.admin.catalog_edit.services
 
 import android.net.Uri
 import ru.beauty.bar.App
-import ru.beauty.bar.dataLayer.grantAppAccess
 import ru.beauty.bar.database.api.CatalogRepository
-import ru.beauty.bar.database.api.StorageRepository
 import ru.beauty.bar.database.model.Category
-import ru.beauty.bar.database.model.CategoryInsert
 import ru.beauty.bar.database.model.Service
 import ru.beauty.bar.database.model.ServiceInsert
-import ru.beauty.bar.navigation.presenter.BasePresenter
+import ru.beauty.bar.navigation.presenter.ImageUploadPresenter
 
-class EditServicePresenter : BasePresenter() {
+class EditServicePresenter : ImageUploadPresenter() {
     override fun onBackPressed() {
         App.INSTANCE.mainInterface.showChoiceMessage(
             message = "Отменить?",
@@ -30,16 +27,6 @@ class EditServicePresenter : BasePresenter() {
                 onSelectedListener(uri)
             }
         )
-    }
-
-    override suspend fun uploadImage(imageUri: Uri): String? {
-        val grantedFile = imageUri.grantAppAccess(App.INSTANCE.mainInterface.getContext())
-
-        val storage = StorageRepository(App.INSTANCE.supabaseClient)
-
-        val url = storage.uploadImage(imageFile = grantedFile)
-
-        return url
     }
 
     suspend fun onSavePressed(

@@ -18,7 +18,7 @@ data class Master(
     val name: String,
 
     @SerialName("picture")
-    val pictueLink: String,
+    val pictureLink: String,
 
     @SerialName("scheme_id")
     val workScheduleId: Int,

@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.user.bookings;
+package ru.beauty.bar.ui.fragment.user.bookings
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,10 +37,9 @@ import ru.beauty.bar.R
 import ru.beauty.bar.dataLayer.BookingOrder
 import ru.beauty.bar.database.model.User
 import ru.beauty.bar.navigation.presenter.user.bookings.UserBookingsPresenter
+import ru.beauty.bar.ui.common.CardTitleDescription
 import ru.beauty.bar.ui.fragment.BaseFragment
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 class UserBookings : BaseFragment() {
@@ -95,8 +94,6 @@ class UserBookings : BaseFragment() {
 
                         bookingList.forEach { item: BookingOrder ->
                             val fullMills = item.fullMills!!
-                            val fullDate = DateTimeFormatter.ISO_INSTANT
-                                .format(Instant.ofEpochSecond(fullMills))
                             val sdfDate = SimpleDateFormat("dd/MM/yy", Locale.getDefault())
                             val dateString = sdfDate.format(fullMills)
                             val sdfTime = SimpleDateFormat("HH:mm", Locale.getDefault())
@@ -104,9 +101,9 @@ class UserBookings : BaseFragment() {
 
                             CardTitleDescription(
                                 name = "Запись на $dateString",
-                                description = item.category?.name+"/"+item.service?.name+"\n" +
-                                        "Мастер: "+item.masterCombined?.master?.name+"\n" +
-                                        "Время: "+timeString,
+                                description = item.category?.name + "/" + item.service?.name + "\n" +
+                                        "Мастер: " + item.masterCombined?.master?.name + "\n" +
+                                        "Время: " + timeString,
                                 image = ImageBitmap.imageResource(R.drawable.service_collage),
                                 button = {
                                     Button(

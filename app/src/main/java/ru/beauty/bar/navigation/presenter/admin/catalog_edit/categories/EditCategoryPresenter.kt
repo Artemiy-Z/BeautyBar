@@ -1,18 +1,13 @@
-package ru.beauty.bar.navigation.presenter.admin.catalog_edit.categories;
+package ru.beauty.bar.navigation.presenter.admin.catalog_edit.categories
 
-import android.accounts.AuthenticatorDescription
 import android.net.Uri
-import androidx.compose.runtime.rememberCoroutineScope
-import kotlinx.coroutines.CoroutineScope
 import ru.beauty.bar.App
-import ru.beauty.bar.dataLayer.grantAppAccess
 import ru.beauty.bar.database.api.CatalogRepository
-import ru.beauty.bar.database.api.StorageRepository
 import ru.beauty.bar.database.model.Category
 import ru.beauty.bar.database.model.CategoryInsert
-import ru.beauty.bar.navigation.presenter.BasePresenter
+import ru.beauty.bar.navigation.presenter.ImageUploadPresenter
 
-class EditCategoryPresenter : BasePresenter() {
+class EditCategoryPresenter : ImageUploadPresenter() {
     override fun onBackPressed() {
         App.INSTANCE.mainInterface.showChoiceMessage(
             message = "Отменить?",
@@ -31,16 +26,6 @@ class EditCategoryPresenter : BasePresenter() {
                 onSelectedListener(uri)
             }
         )
-    }
-
-    override suspend fun uploadImage(imageUri: Uri): String? {
-        val grantedFile = imageUri.grantAppAccess(App.INSTANCE.mainInterface.getContext())
-
-        val storage = StorageRepository(App.INSTANCE.supabaseClient)
-
-        val url = storage.uploadImage(imageFile = grantedFile)
-
-        return url
     }
 
     suspend fun onSavePressed(

@@ -8,7 +8,6 @@ import ru.beauty.bar.database.model.Master
 import ru.beauty.bar.database.model.MasterInsert
 import ru.beauty.bar.database.model.WorkSchedule
 import ru.beauty.bar.database.model.WorkScheduleInsert
-import ru.beauty.bar.ui.fragment.admin.masters.AdminEditPortfolio
 
 class MasterRepository(val client: SupabaseClient) {
     suspend fun selectSingleMaster(masterId: Int): Master? {
@@ -25,7 +24,7 @@ class MasterRepository(val client: SupabaseClient) {
 
             return master
         } catch (e: Exception) {
-            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage)
+            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage?:"NO_MESSAGE")
             App.INSTANCE.mainInterface.toggleLoading(false)
             return null
         }
@@ -67,7 +66,7 @@ class MasterRepository(val client: SupabaseClient) {
             App.INSTANCE.mainInterface.toggleLoading(false)
             return list
         } catch (e: Exception) {
-            if (e.localizedMessage.contains("dupl")) {
+            if ((e.localizedMessage?:"NO_MESSAGE").contains("dupl")) {
                 App.INSTANCE.mainInterface.showErrorMessage("Мастер с таким логином уже существует!")
             }
             //App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage)
@@ -105,7 +104,7 @@ class MasterRepository(val client: SupabaseClient) {
             App.INSTANCE.mainInterface.toggleLoading(false)
             return result
         } catch (e: Exception) {
-            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage)
+            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage?:"NO_MESSAGE")
             App.INSTANCE.mainInterface.toggleLoading(false)
             return null
         }
@@ -138,15 +137,13 @@ class MasterRepository(val client: SupabaseClient) {
             App.INSTANCE.mainInterface.toggleLoading(false)
             return result
         } catch (e: Exception) {
-            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage)
+            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage?:"NO_MESSAGE")
             App.INSTANCE.mainInterface.toggleLoading(false)
             return null
         }
     }
 
-    suspend fun updatePortfolio(master: Master, portfolio: String)
-    :
-    Boolean {
+    suspend fun updatePortfolio(master: Master, portfolio: String): Boolean {
         App.INSTANCE.mainInterface.toggleLoading(true)
         try {
             client
@@ -163,7 +160,7 @@ class MasterRepository(val client: SupabaseClient) {
             return true
         }
         catch (e: Exception) {
-            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage)
+            App.INSTANCE.mainInterface.showErrorMessage(e.localizedMessage?:"NO_MESSAGE")
             App.INSTANCE.mainInterface.toggleLoading(true)
             return false
         }

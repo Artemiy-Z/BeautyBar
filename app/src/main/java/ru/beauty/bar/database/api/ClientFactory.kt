@@ -9,8 +9,8 @@ class ClientFactory {
     companion object fun getClient(): SupabaseClient
     {
         return createSupabaseClient(
-            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFueGZwc3pncmp6Y2p4dnRlZHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYzODQxNDMsImV4cCI6MjA2MTk2MDE0M30.H3dd8YNzf-wA7kPUvfZ0y3-YSsEzDtfjgA36_-XwBuM",
-            supabaseUrl = "https://qnxfpszgrjzcjxvtedtb.supabase.co"
+            supabaseUrl = "https://wxixfmpszxqqsryrwwky.supabase.co",
+            supabaseKey = "sb_publishable_ojoe6a_tRElGtMZXvEprQA_g0yTI-b4"
         ) {
             install(Postgrest)
             install(Storage)

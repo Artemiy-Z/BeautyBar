@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.admin.masters;
+package ru.beauty.bar.ui.fragment.admin.masters
 
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenuItem
@@ -18,7 +15,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.MenuDefaults
@@ -35,12 +31,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import ru.beauty.bar.App
 import ru.beauty.bar.database.model.WorkSchedule
 import ru.beauty.bar.database.model.WorkScheduleInsert
 import ru.beauty.bar.navigation.presenter.admin.masters.AdminEditMasterPresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.InputField
+import ru.beauty.bar.ui.common.InputIntField
+import ru.beauty.bar.ui.common.LoadAsyncImage
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class AdminEditMaster : BaseFragment() {
@@ -82,7 +81,7 @@ class AdminEditMaster : BaseFragment() {
         if (isEditing) {
             masterName.value = App.INSTANCE.sharedData.editedMaster?.master!!.name
             masterLogin.value = App.INSTANCE.sharedData.editedMaster?.master!!.login
-            masterImageLink.value = App.INSTANCE.sharedData.editedMaster?.master!!.pictueLink
+            masterImageLink.value = App.INSTANCE.sharedData.editedMaster?.master!!.pictureLink
             masterExperience.value = App.INSTANCE.sharedData.editedMaster?.master!!.experience
             if(App.INSTANCE.sharedData.editedMaster?.schedule!!.monday)
                 workScheduleSelected.add(daysOfWeek.toList()[0])
@@ -101,7 +100,7 @@ class AdminEditMaster : BaseFragment() {
         }
 
         BaseScaffoldColumn(
-            titleText =
+            this, titleText =
                 if (isEditing)
                     "Редактирование мастера"
                 else
@@ -230,7 +229,7 @@ class AdminEditMaster : BaseFragment() {
                                         Checkbox(
                                             checked = workScheduleSelected.contains(selectionOption),
                                             onCheckedChange = { isChecked ->
-                                                if(isChecked)
+                                                if (isChecked)
                                                     workScheduleSelected.add(selectionOption)
                                                 else
                                                     workScheduleSelected.remove(selectionOption)

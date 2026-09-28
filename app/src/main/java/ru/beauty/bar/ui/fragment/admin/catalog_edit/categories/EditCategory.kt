@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.admin.catalog_edit.categories;
+package ru.beauty.bar.ui.fragment.admin.catalog_edit.categories
 
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -23,10 +23,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import ru.beauty.bar.App
 import ru.beauty.bar.navigation.presenter.admin.catalog_edit.categories.EditCategoryPresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.InputField
+import ru.beauty.bar.ui.common.LargeInputField
+import ru.beauty.bar.ui.common.LoadAsyncImage
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class EditCategory : BaseFragment() {
@@ -56,7 +59,7 @@ class EditCategory : BaseFragment() {
         }
 
         BaseScaffoldColumn(
-            backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+            this, backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
             titleText =
                 if (isEditing)
                     "Редактирование категории"
@@ -94,7 +97,7 @@ class EditCategory : BaseFragment() {
                 Button(
                     onClick = {
                         presenter.onPictureSelectPressed(
-                            onSelectedListener = {uri ->
+                            onSelectedListener = { uri ->
                                 categoryPictureUri.value = uri
                             }
                         )

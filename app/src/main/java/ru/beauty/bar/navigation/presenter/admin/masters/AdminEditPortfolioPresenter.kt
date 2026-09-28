@@ -1,13 +1,13 @@
-package ru.beauty.bar.navigation.presenter.admin.masters;
+package ru.beauty.bar.navigation.presenter.admin.masters
 
 import android.net.Uri
 import ru.beauty.bar.App
 import ru.beauty.bar.dataLayer.UriUrl
 import ru.beauty.bar.database.api.MasterRepository
 import ru.beauty.bar.database.model.Master
-import ru.beauty.bar.navigation.presenter.BasePresenter
+import ru.beauty.bar.navigation.presenter.ImageUploadPresenter
 
-class AdminEditPortfolioPresenter : BasePresenter() {
+class AdminEditPortfolioPresenter : ImageUploadPresenter() {
     override fun onBackPressed() {
         App.INSTANCE.mainInterface.showChoiceMessage(
             message = "Отменить?",
@@ -39,7 +39,7 @@ class AdminEditPortfolioPresenter : BasePresenter() {
     ) {
         if(portfolio.isEmpty()) {
             App.INSTANCE.mainInterface.showErrorMessage("Не выбрано ни одного изображения для загрузки!")
-            return;
+            return
         }
 
         val urls: ArrayList<String> = ArrayList()

@@ -1,17 +1,15 @@
-package ru.beauty.bar.navigation.presenter.admin.masters;
+package ru.beauty.bar.navigation.presenter.admin.masters
 
 import android.net.Uri
 import ru.beauty.bar.App
-import ru.beauty.bar.dataLayer.grantAppAccess
 import ru.beauty.bar.database.api.MasterRepository
-import ru.beauty.bar.database.api.StorageRepository
 import ru.beauty.bar.database.model.Master
 import ru.beauty.bar.database.model.MasterInsert
 import ru.beauty.bar.database.model.WorkSchedule
 import ru.beauty.bar.database.model.WorkScheduleInsert
-import ru.beauty.bar.navigation.presenter.BasePresenter
+import ru.beauty.bar.navigation.presenter.ImageUploadPresenter
 
-class AdminEditMasterPresenter : BasePresenter() {
+class AdminEditMasterPresenter : ImageUploadPresenter() {
     override fun onBackPressed() {
         App.INSTANCE.mainInterface.showChoiceMessage(
             message = "Отменить?",
@@ -30,16 +28,6 @@ class AdminEditMasterPresenter : BasePresenter() {
                 onSelectedListener(uri)
             }
         )
-    }
-
-    override suspend fun uploadImage(imageUri: Uri): String? {
-        val grantedFile = imageUri.grantAppAccess(App.INSTANCE.mainInterface.getContext())
-
-        val storage = StorageRepository(App.INSTANCE.supabaseClient)
-
-        val url = storage.uploadImage(imageFile = grantedFile)
-
-        return url
     }
 
     suspend fun onUpdatePressed(
@@ -89,7 +77,7 @@ class AdminEditMasterPresenter : BasePresenter() {
             passhash = source.passhash,
             workScheduleId = source.workScheduleId,
             experience = experience,
-            pictueLink = imageLinkFinal,
+            pictureLink = imageLinkFinal,
             portfloio = ""
         )
 

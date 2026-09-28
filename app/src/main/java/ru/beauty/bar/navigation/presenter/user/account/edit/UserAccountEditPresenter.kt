@@ -4,10 +4,9 @@ import android.net.Uri
 import ru.beauty.bar.App
 import ru.beauty.bar.database.api.UserRepository
 import ru.beauty.bar.database.model.User
-import ru.beauty.bar.navigation.general.Screens
-import ru.beauty.bar.navigation.presenter.BasePresenter
+import ru.beauty.bar.navigation.presenter.ImageUploadPresenter
 
-class UserAccountEditPresenter: BasePresenter() {
+class UserAccountEditPresenter: ImageUploadPresenter() {
     override fun onBackPressed() {
         App.INSTANCE.mainInterface.showChoiceMessage(
             message = "Отменить?",
@@ -74,7 +73,7 @@ class UserAccountEditPresenter: BasePresenter() {
                 id = id,
                 name = name,
                 passhash = passhashFinal,
-                pictueLink = finalLink,
+                pictureLink = finalLink,
                 login = login
             )
         )

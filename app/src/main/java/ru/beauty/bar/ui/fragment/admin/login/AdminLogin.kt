@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.admin.login;
+package ru.beauty.bar.ui.fragment.admin.login
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 import ru.beauty.bar.navigation.presenter.admin.login.AdminLoginPresenter
+import ru.beauty.bar.ui.common.InputField
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class AdminLogin : BaseFragment() {

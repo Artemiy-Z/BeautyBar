@@ -1,4 +1,4 @@
-package ru.beauty.bar.ui.fragment.user.order_make.date_select;
+package ru.beauty.bar.ui.fragment.user.order_make.date_select
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,8 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.beauty.bar.App
 import ru.beauty.bar.navigation.presenter.user.order_make.date_select.OrderDateSelectPresenter
+import ru.beauty.bar.ui.common.DatePickerDocked
+import ru.beauty.bar.ui.common.SelectableDatesList
 import ru.beauty.bar.ui.fragment.BaseFragment
 import java.util.Calendar
 
@@ -38,38 +38,36 @@ class OrderDateSelect : BaseFragment() {
     @OptIn(ExperimentalMaterial3Api::class)
         @Composable
     override fun ComposeFunction() {
-        val buttonEnabled = remember { mutableStateOf(true) }
-
         val schedule = App.INSTANCE.sharedData.orderProgress!!.masterCombined!!.schedule!!
 
         val datePickerState = rememberDatePickerState(
             selectableDates = SelectableDatesList(
                 listOf(
-                    if(schedule.monday)
+                    if (schedule.monday)
                         Calendar.MONDAY
                     else
                         -1,
-                    if(schedule.tuesday)
+                    if (schedule.tuesday)
                         Calendar.TUESDAY
                     else
                         -1,
-                    if(schedule.wednesday)
+                    if (schedule.wednesday)
                         Calendar.WEDNESDAY
                     else
                         -1,
-                    if(schedule.thursday)
+                    if (schedule.thursday)
                         Calendar.THURSDAY
                     else
                         -1,
-                    if(schedule.friday)
+                    if (schedule.friday)
                         Calendar.FRIDAY
                     else
                         -1,
-                    if(schedule.saturday)
+                    if (schedule.saturday)
                         Calendar.SATURDAY
                     else
                         -1,
-                    if(schedule.sunday)
+                    if (schedule.sunday)
                         Calendar.SUNDAY
                     else
                         -1,
@@ -130,10 +128,8 @@ class OrderDateSelect : BaseFragment() {
 
                         HorizontalDivider(thickness = 16.dp, color = Color.Transparent)
 
-                        val calendar = Calendar.getInstance()
-
                         DatePickerDocked(
-                            datePickerState = datePickerState,
+                            this@OrderDateSelect, datePickerState = datePickerState,
                             initialPickerVisibility = true,
                             titleText = "Дата записи"
                         )

@@ -1,24 +1,20 @@
-package ru.beauty.bar.ui.fragment.admin.masters;
+package ru.beauty.bar.ui.fragment.admin.masters
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ru.beauty.bar.dataLayer.MasterScheduleCombined
-import ru.beauty.bar.database.model.Master
 import ru.beauty.bar.navigation.presenter.admin.masters.AdminMastersPresenter
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
+import ru.beauty.bar.ui.common.CardTitleDescription
 import ru.beauty.bar.ui.fragment.BaseFragment
 
 class AdminMasters : BaseFragment() {
@@ -43,7 +39,7 @@ class AdminMasters : BaseFragment() {
         }
 
         BaseScaffoldColumn(
-            titleText = "Ваши мастера",
+            this, titleText = "Ваши мастера",
             onBackButtonClick = { presenter.onBackPressed() },
             backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
             content = {
@@ -60,7 +56,7 @@ class AdminMasters : BaseFragment() {
                     CardTitleDescription(
                         name = item.master!!.name,
                         description = experience + "\n" + schedule,
-                        imageLink = item.master.pictueLink,
+                        imageLink = item.master.pictureLink,
                         backgroundColor = MaterialTheme.colorScheme.tertiary,
                         button = {
                             Row(
