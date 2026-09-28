@@ -1,7 +1,6 @@
-package ru.beauty.bar.navigation.presenter.master.account.view;
+package ru.beauty.bar.navigation.presenter.master.account.view
 
-import ru.beauty.bar.App
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class MasterAccountViewPresenter : BasePresenter() {

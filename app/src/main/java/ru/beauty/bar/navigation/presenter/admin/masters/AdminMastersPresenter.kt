@@ -1,10 +1,9 @@
-package ru.beauty.bar.navigation.presenter.admin.masters;
+package ru.beauty.bar.navigation.presenter.admin.masters
 
 import ru.beauty.bar.App
 import ru.beauty.bar.dataLayer.MasterScheduleCombined
 import ru.beauty.bar.database.api.MasterRepository
-import ru.beauty.bar.database.model.Master
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class AdminMastersPresenter : BasePresenter() {

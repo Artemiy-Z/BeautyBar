@@ -1,10 +1,9 @@
-package ru.beauty.bar.navigation.presenter.user.order_make.master_select;
+package ru.beauty.bar.navigation.presenter.user.order_make.master_select
 
 import ru.beauty.bar.App
 import ru.beauty.bar.dataLayer.MasterScheduleCombined
 import ru.beauty.bar.database.api.MasterRepository
-import ru.beauty.bar.database.model.Master
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class OrderMasterSelectPresenter : BasePresenter() {

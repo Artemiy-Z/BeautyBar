@@ -1,11 +1,10 @@
-package ru.beauty.bar.navigation.presenter.admin.catalog_edit.services;
+package ru.beauty.bar.navigation.presenter.admin.catalog_edit.services
 
-import com.github.terrakok.cicerone.ResultListener
 import ru.beauty.bar.App
 import ru.beauty.bar.database.api.CatalogRepository
 import ru.beauty.bar.database.model.Category
 import ru.beauty.bar.database.model.Service
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class CatalogEditServicesPresenter : BasePresenter() {
@@ -37,12 +36,10 @@ class CatalogEditServicesPresenter : BasePresenter() {
 
         router.setResultListener(
             key = "UPDATE_DATA",
-            listener = ResultListener(
-                function = {
-                    App.INSTANCE.sharedData.editedCategory = null
-                    onDataUpdated()
-                }
-            )
+            listener = {
+                App.INSTANCE.sharedData.editedCategory = null
+                onDataUpdated()
+            }
         )
 
         App.INSTANCE.sharedData.editedService = service
@@ -61,12 +58,10 @@ class CatalogEditServicesPresenter : BasePresenter() {
 
         router.setResultListener(
             key = "UPDATE_DATA",
-            listener = ResultListener(
-                function = {
-                    App.INSTANCE.sharedData.editedCategory = null
-                    onDataUpdated()
-                }
-            )
+            listener = {
+                App.INSTANCE.sharedData.editedCategory = null
+                onDataUpdated()
+            }
         )
 
         App.INSTANCE.sharedData.editedService = null

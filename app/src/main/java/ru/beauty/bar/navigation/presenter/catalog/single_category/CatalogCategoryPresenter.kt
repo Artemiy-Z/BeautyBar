@@ -1,10 +1,10 @@
-package ru.beauty.bar.navigation.presenter.catalog.single_category;
+package ru.beauty.bar.navigation.presenter.catalog.single_category
 
 import ru.beauty.bar.App
 import ru.beauty.bar.database.api.CatalogRepository
 import ru.beauty.bar.database.model.Category
 import ru.beauty.bar.database.model.Service
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class CatalogCategoryPresenter : BasePresenter() {

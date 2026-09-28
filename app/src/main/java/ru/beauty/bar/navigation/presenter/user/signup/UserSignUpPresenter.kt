@@ -1,9 +1,8 @@
-package ru.beauty.bar.navigation.presenter.user.signup;
+package ru.beauty.bar.navigation.presenter.user.signup
 
 import ru.beauty.bar.App
 import ru.beauty.bar.database.api.AuthenticationRepository
-import ru.beauty.bar.database.api.ClientFactory
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class UserSignUpPresenter : BasePresenter() {

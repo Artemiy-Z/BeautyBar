@@ -1,8 +1,8 @@
-package ru.beauty.bar.navigation.presenter.catalog.sevice_item;
+package ru.beauty.bar.navigation.presenter.catalog.sevice_item
 
 import ru.beauty.bar.App
 import ru.beauty.bar.dataLayer.BookingOrder
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class CatalogServicePresenter : BasePresenter() {

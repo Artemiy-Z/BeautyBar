@@ -1,9 +1,8 @@
-package ru.beauty.bar.navigation.presenter.user.login;
+package ru.beauty.bar.navigation.presenter.user.login
 
 import ru.beauty.bar.App
 import ru.beauty.bar.database.api.AuthenticationRepository
-import ru.beauty.bar.database.api.ClientFactory
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class UserLoginPresenter : BasePresenter() {
@@ -43,9 +42,5 @@ class UserLoginPresenter : BasePresenter() {
 
     fun onAdminPressed() {
         router.navigateTo(Screens.AdminLoginScreen)
-    }
-
-    fun onMasterPressed() {
-        router.navigateTo(Screens.MasterLoginScreen)
     }
 }

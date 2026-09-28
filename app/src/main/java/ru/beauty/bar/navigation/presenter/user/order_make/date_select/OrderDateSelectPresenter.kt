@@ -1,7 +1,7 @@
-package ru.beauty.bar.navigation.presenter.user.order_make.date_select;
+package ru.beauty.bar.navigation.presenter.user.order_make.date_select
 
 import ru.beauty.bar.App
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class OrderDateSelectPresenter : BasePresenter() {

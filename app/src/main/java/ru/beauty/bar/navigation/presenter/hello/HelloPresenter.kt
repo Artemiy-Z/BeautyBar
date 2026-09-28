@@ -1,7 +1,7 @@
 package ru.beauty.bar.navigation.presenter.hello
 
 import ru.beauty.bar.App
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 import androidx.core.content.edit
 

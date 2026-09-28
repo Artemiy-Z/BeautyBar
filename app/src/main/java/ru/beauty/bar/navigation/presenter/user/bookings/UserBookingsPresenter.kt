@@ -1,4 +1,4 @@
-package ru.beauty.bar.navigation.presenter.user.bookings;
+package ru.beauty.bar.navigation.presenter.user.bookings
 
 import ru.beauty.bar.App
 import ru.beauty.bar.dataLayer.BookingOrder
@@ -7,8 +7,7 @@ import ru.beauty.bar.database.api.BookingRepository
 import ru.beauty.bar.database.api.CatalogRepository
 import ru.beauty.bar.database.api.MasterRepository
 import ru.beauty.bar.database.model.Booking
-import ru.beauty.bar.database.model.Master
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 import java.text.SimpleDateFormat
 import java.util.Locale

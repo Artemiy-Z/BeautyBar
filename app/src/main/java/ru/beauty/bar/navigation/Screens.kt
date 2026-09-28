@@ -1,4 +1,4 @@
-package ru.beauty.bar.navigation.general
+package ru.beauty.bar.navigation
 
 import androidx.fragment.app.FragmentFactory
 import com.github.terrakok.cicerone.androidx.FragmentScreen
@@ -15,14 +15,11 @@ import ru.beauty.bar.ui.fragment.admin.masters.AdminEditPortfolio
 import ru.beauty.bar.ui.fragment.admin.masters.AdminMasters
 import ru.beauty.bar.ui.fragment.admin.users.AdminUsers
 import ru.beauty.bar.ui.fragment.catalog.categories.CatalogCategories
-import ru.beauty.bar.ui.fragment.catalog.search_results.CatalogSearch
 import ru.beauty.bar.ui.fragment.catalog.service_item.CatalogService
 import ru.beauty.bar.ui.fragment.catalog.single_category.CatalogCategory
-import ru.beauty.bar.ui.fragment.hello.Hello
 import ru.beauty.bar.ui.fragment.master.account.edit.MasterAccountEdit
 import ru.beauty.bar.ui.fragment.master.account.view.MasterAccountView
 import ru.beauty.bar.ui.fragment.master.bookings.MasterBookings
-import ru.beauty.bar.ui.fragment.master.login.MasterLogin
 import ru.beauty.bar.ui.fragment.master.main.MasterMain
 import ru.beauty.bar.ui.fragment.user.account.edit.UserAccountEdit
 import ru.beauty.bar.ui.fragment.user.account.view.UserAccountView
@@ -30,15 +27,16 @@ import ru.beauty.bar.ui.fragment.user.bookings.UserBookings
 import ru.beauty.bar.ui.fragment.user.login.UserLogin
 import ru.beauty.bar.ui.fragment.user.main.UserMain
 import ru.beauty.bar.ui.fragment.user.order_make.date_select.OrderDateSelect
+import ru.beauty.bar.ui.fragment.user.order_make.master_select.OrderMasterPortfolioView
 import ru.beauty.bar.ui.fragment.user.order_make.master_select.OrderMasterSelect
 import ru.beauty.bar.ui.fragment.user.order_make.order_confirmation.OrderConfirm
-import ru.beauty.bar.ui.fragment.user.order_make.master_select.OrderMasterPortfolioView
 import ru.beauty.bar.ui.fragment.user.order_make.time_select.OrderTimeSelect
 import ru.beauty.bar.ui.fragment.user.signup.UserSignUp
 
 class Screens {
     object Hello: FragmentScreen {
-        override fun createFragment(factory: FragmentFactory) = Hello()
+        override fun createFragment(factory: FragmentFactory) =
+            ru.beauty.bar.ui.fragment.hello.Hello()
     }
 
     object AdminBookingsScreen: FragmentScreen {
@@ -59,9 +57,7 @@ class Screens {
     object CatalogCategoriesScreen: FragmentScreen {
         override fun createFragment(factory: FragmentFactory) = CatalogCategories()
     }
-    object CatalogSearchScreen: FragmentScreen {
-        override fun createFragment(factory: FragmentFactory) = CatalogSearch()
-    }
+
     object CatalogServiceScreen: FragmentScreen {
         override fun createFragment(factory: FragmentFactory) = CatalogService()
     }
@@ -77,9 +73,7 @@ class Screens {
     object MasterBookingsScreen: FragmentScreen {
         override fun createFragment(factory: FragmentFactory) = MasterBookings()
     }
-    object MasterLoginScreen: FragmentScreen {
-        override fun createFragment(factory: FragmentFactory) = MasterLogin()
-    }
+
     object MasterMainScreen: FragmentScreen {
         override fun createFragment(factory: FragmentFactory) = MasterMain()
     }

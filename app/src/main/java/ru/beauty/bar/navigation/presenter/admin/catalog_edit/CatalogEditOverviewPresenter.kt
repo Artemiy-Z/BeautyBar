@@ -1,6 +1,6 @@
-package ru.beauty.bar.navigation.presenter.admin.catalog_edit;
+package ru.beauty.bar.navigation.presenter.admin.catalog_edit
 
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class CatalogEditOverviewPresenter : BasePresenter() {

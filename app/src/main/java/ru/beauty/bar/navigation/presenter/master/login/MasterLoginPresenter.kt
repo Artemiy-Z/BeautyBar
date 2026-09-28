@@ -1,9 +1,8 @@
-package ru.beauty.bar.navigation.presenter.master.login;
+package ru.beauty.bar.navigation.presenter.master.login
 
 import ru.beauty.bar.App
 import ru.beauty.bar.database.api.AuthenticationRepository
-import ru.beauty.bar.database.api.ClientFactory
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class MasterLoginPresenter : BasePresenter() {

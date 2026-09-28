@@ -1,12 +1,11 @@
-package ru.beauty.bar.navigation.presenter.user.order_make.order_confirmation;
+package ru.beauty.bar.navigation.presenter.user.order_make.order_confirmation
 
 import ru.beauty.bar.App
 import ru.beauty.bar.database.api.BookingRepository
 import ru.beauty.bar.database.model.BookingInsert
 import ru.beauty.bar.database.model.User
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
-import java.sql.Timestamp
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId

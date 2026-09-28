@@ -1,7 +1,7 @@
-package ru.beauty.bar.navigation.presenter.master.main;
+package ru.beauty.bar.navigation.presenter.master.main
 
 import ru.beauty.bar.App
-import ru.beauty.bar.navigation.general.Screens
+import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
 
 class MasterMainPresenter : BasePresenter() {
