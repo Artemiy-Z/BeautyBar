@@ -1,28 +1,54 @@
-# Project Beauty Bar - an Android-compatible App for managing beauty-related businesses
-## Main goals
-When I started this project, I had several goals in mind:
-- polish my programming skills and learn to use Kotlin for Android development;
-- learn how to construct adaptable and interactable user interfaces using Jetpack Compose;
-- learn how to make lightweight, expandable App navigation using Cicerone.
-## Features
-### Admin managing
-Lets administrator create and edit: 
-- categories of services;
-- services;
-- masters that work in certain schedules.
-### User experience
-Common users can sign in and sign up as new users to access such features as:
-- view catalog;
-- read descriptions for any service;
-- edit profile details;
-- book services and specify master they will be working with, date and time;
-- view and cancelling bookings.
-### master experience
-Masters can sign in using login-password that they get from admins, and get access to these features:
-- view bookings that are scheduled to them;
-- edit profile details.
-## Conclusion
-Project's goals have been achieved and I have learned a lot about such technologies as:
-- UI/UX framework Jetpack Compose;
-- Navigation framework Cicerone
-- Database management using Supabase.
+# Приложение BeautyBar для менеджмента салонов красоты, записи на услуги
+Основной целью при разработке данного приложения я поставил полировку навыков проектирования хорошей понятной архитектуры, адаптивных пользовательских интерфейсов на Jetpack Compose, а также реализацию взаимодействия приложения с сервером базы данных для авторизации и бизнес-процессов. 
+
+## Возможности
+1) Менеджмент салона красоты: администратор через приложение и отдельный аккаунт может добавлять, изменять и удалять категории услуг, сами услуги и мастеров салона
+2) Аунтификация пользователя и мастера
+3) Просмотр каталога, запись к мастеру на услугу
+4) Мастер может изменять свои личные данные, редактировать портфолио работ, а также смотреть, кто к нему записался на услугу
+5) Пользователь может изменять свои личные данные, а также отслеживать свои записи на услуги
+
+## Стек
+- Android SDK
+- Jetpack Compose
+- Supabase Kotlin Client
+- Cicerone (навигация)
+- coil-compose (асинхронная загрузка изображений)
+
+## Архитектура
+Приложение построено по архитектуре MVP (Model-View-Presenter), где в файловой структуре описаны следующие слои:
+1) **/database**
+   - **/model** Слой модели: здесь хранятся классы, представляющие модели данных из БД
+   - **/api** Слой API: здесь прописана логика получения и отправки данных на БД
+2) **/dataLayer** Промежуточный слой: содержит необходимые классы совместимости моделей БД с приложением для более удобной реализации обработки данных у клиента
+3) **/navigation**
+   - **/general** Screens.kt: описание экранов
+   - **/presenter** Слой бизнес-логики: здесь для каждого экрана приложения описана логика взаимодействия с данными - именно этот слой запускает методы получения и отправки данных с БД
+4) **/ui**: Синглтон App.kt для хранения данных для всех экранов, и MainActivity.kt - android-activity для отображения Cicerone-навигатора
+   - **/fragment** Слой представления: здесь данные приложения отображаются пользователю через пользовательский интерфейс, а также ввод пользователя передается в слой бизнес-логики (нажатие кнопок, загрузка картинок и т.д.)
+   - **/common**: здесь хранятся элементы интерфейса, которые часто используются в разных экранах и нужны для избежания повторения кода
+   - **/theme**: здесь описан внешний вид приложения (цветовая тема, шрифты и т.д.)
+
+## Инструкция по сборке и запуску:
+1) Клонируйте репозиторий:
+   ```
+   git clone https://github.com/Artemiy-Z/BeautyBar
+   ```
+2) Запустите сборщик Gradle для получения .apk файла:
+   ```
+   cd ./BeautyBar
+   gradlew build
+   ```
+   ИЛИ (если вы на Windows)
+   ```
+   cd ./BeautyBar
+   gradlew.bat
+   ```
+3) Далее в папке /BeautyBar/app/build/outputs/apk/debug:
+   - находим файл app-debug.apk
+   - переносим на телефон
+   - открываем (при необходимости разрешаем в настройках установку из непроверенных источников)
+4) После установки запускаем из меню приложений
+
+## Скриншоты
+<img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/5e836235-5cc2-4df2-b8e8-564475704b3e" /> <img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/389b3ac0-32d9-42d1-9871-eae9489435ae" />
