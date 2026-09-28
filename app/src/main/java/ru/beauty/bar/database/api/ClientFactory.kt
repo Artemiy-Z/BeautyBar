@@ -4,13 +4,14 @@ import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.storage.Storage
+import ru.beauty.bar.BuildConfig
 
 class ClientFactory {
     companion object fun getClient(): SupabaseClient
     {
         return createSupabaseClient(
-            supabaseUrl = "https://wxixfmpszxqqsryrwwky.supabase.co",
-            supabaseKey = "sb_publishable_ojoe6a_tRElGtMZXvEprQA_g0yTI-b4"
+            supabaseUrl = BuildConfig.SUPABASE_PUBLIC_KEY,
+            supabaseKey = BuildConfig.SUPABASE_URL
         ) {
             install(Postgrest)
             install(Storage)

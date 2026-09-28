@@ -1,27 +1,46 @@
-android.buildFeatures.buildConfig = true
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kps)
 }
 
+val supabasePublicKey = providers
+    .gradleProperty("SUPABASE_PUBLIC_KEY")
+    .getOrElse(
+        "SUPABASE_PUBLIC_KEY is missing in gradle.properties or project properties"
+    )
+
+val supabaseUrl = providers
+    .gradleProperty("SUPABASE_URL")
+    .getOrElse(
+        "SUPABASE_URL is missing in gradle.properties or project properties"
+    )
+
 android {
     namespace = "ru.beauty.bar"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "ru.beauty.bar"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "SUPABASE_ANON_KEY", project.properties["SUPABASE_ANON_KEY"].toString())
-        buildConfigField("String", "SUPABASE_URL", project.properties["SUPABASE_URL"].toString())
+        buildConfigField(
+            "String",
+            "SUPABASE_PUBLIC_KEY",
+            "\"${supabasePublicKey.replace("\"", "\\\"")}\""
+        )
+
+        buildConfigField(
+            "String",
+            "SUPABASE_URL",
+            "\"${supabaseUrl.replace("\"", "\\\"")}\""
+        )
     }
 
     buildTypes {
@@ -37,12 +56,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+    /*kotlinOptions {
+        jvmTarget = "11"
+    }*/
 }
 
 dependencies {
@@ -58,10 +78,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.androidx.compose.material.icons.core)
 
     // Needed for the navigation
     implementation(libs.cicerone)
@@ -77,6 +98,8 @@ dependencies {
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.utils)
 
-    implementation("androidx.core:core-splashscreen:1.0.0")
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.coil.compose)
+
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
