@@ -55,7 +55,7 @@
 2) Создайте и настройте базу данных:
    - Зарегистрируйтесь/авторизируйтесь на сайте supabase.com
    - Создайте пустой проект
-   - Во вкладке "SQL Editor" вставьте содержимое /BeautyBar/SupabaseMigration.sql и запустите
+   - Во вкладке "SQL Editor" вставьте содержимое /BeautyBar/supabase_migration.sql и запустите
    - Проверьте создание таблиц USER, ADMIN, MASTER, BOOKING, CATEGORY, SERVICE, WORK_SCHEME и связей между ними
    - Создайте bucket во вкладке "Storage" и назовите его "img" (без кавычек)
    - Во вкладке "SQL Editor" выполните следующую команду:
