@@ -10,8 +10,8 @@ class ClientFactory {
     companion object fun getClient(): SupabaseClient
     {
         return createSupabaseClient(
-            supabaseUrl = BuildConfig.SUPABASE_PUBLIC_KEY,
-            supabaseKey = BuildConfig.SUPABASE_URL
+            supabaseUrl = BuildConfig.SUPABASE_URL,
+            supabaseKey = BuildConfig.SUPABASE_PUBLIC_KEY
         ) {
             install(Postgrest)
             install(Storage)
