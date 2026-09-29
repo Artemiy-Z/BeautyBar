@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -5,17 +7,16 @@ plugins {
     alias(libs.plugins.kps)
 }
 
-val supabasePublicKey = providers
-    .gradleProperty("SUPABASE_PUBLIC_KEY")
-    .getOrElse(
-        "SUPABASE_PUBLIC_KEY is missing in gradle.properties or project properties"
-    )
+val localProperties = Properties().apply {
+    val localFile = rootProject.file("local.properties")
+    if (localFile.isFile) {
+        localFile.inputStream().use { load(it) }
+    }
+}
 
-val supabaseUrl = providers
-    .gradleProperty("SUPABASE_URL")
-    .getOrElse(
-        "SUPABASE_URL is missing in gradle.properties or project properties"
-    )
+val supabasePublicKey = localProperties.getProperty("SUPABASE_PUBLIC_KEY")?: error("Укажите SUPABASE_PUBLIC_KEY в local.properties")
+
+val supabaseUrl = localProperties.getProperty("SUPABASE_URL")?: error("Укажите SUPABASE_URL в local.properties")
 
 android {
     namespace = "ru.beauty.bar"
