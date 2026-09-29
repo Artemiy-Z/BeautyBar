@@ -34,7 +34,9 @@
 - `database` — модели данных и взаимодействие с Supabase/PostgreSQL.
 - `navigation` — описание экранов и навигация между ними.
 - `navigation/presenter` — логика экранов, загрузка данных и выполнение операций.
-- `ui/fragment` — пользовательский интерфейс на Jetpack Compose.
+- `ui/fragment` — Fragment-контейнеры, используемые для интеграции Cicerone
+  с экранами на Jetpack Compose. В дальнейшем планируется миграция на
+  Navigation Compose и отказ от Fragment-контейнеров.
 - `ui/common` — переиспользуемые Compose-компоненты.
 - `ui/theme` — тема, цвета, типографика и стили приложения.
 
@@ -50,7 +52,27 @@
    ```
    git clone https://github.com/Artemiy-Z/BeautyBar
    ```
-2) Запустите сборщик Gradle для получения .apk файла:
+2) Создайте и настройте базу данных:
+   - Зарегистрируйтесь/авторизируйтесь на сайте supabase.com
+   - Создайте пустой проект
+   - Во вкладке "SQL Editor" вставьте содержимое /BeautyBar/SupabaseMigration.sql и запустите
+   - Проверьте создание таблиц USER, ADMIN, MASTER, BOOKING, CATEGORY, SERVICE, WORK_SCHEME и связей между ними
+   - Создайте bucket во вкладке "Storage" и назовите его "img" (без кавычек)
+   - Во вкладке "SQL Editor" выполните следующую команду:
+     ```
+     INSERT into "ADMIN"(login, passhash) values('admin', '92668751')
+     ```
+     эта команда создаст в базе данных запись об администраторе с данными: логин=admin, пароль=admin
+3) В файле /BeautyBar/local.properties измените следующие строки:
+   ```
+   SUPABASE_PUBLIC_KEY=PUBLIC_KEY
+   SUPABASE_URL=SUPABASE_URL
+   ```
+   заменив PUBLIC_KEY и SUPABASE_URL на URL и PUBLISHABLE_KEY из базы данных Supabase (см. Dashboard/Connect/Server, а также Project Settings/API Keys/Publishable Key)
+   > ВАЖНО!
+   > Используйте только Publishable Key. Никогда не используйте
+   > Secret Key, service_role key или другие административные ключи.
+5) Запустите сборщик Gradle для получения .apk файла:
    ```
    cd ./BeautyBar
    ./gradlew build
@@ -58,13 +80,13 @@
    ИЛИ (если вы на Windows)
    ```
    cd ./BeautyBar
-   ./gradlew.bat
+   ./gradlew.bat build
    ```
-3) Далее в папке /BeautyBar/app/build/outputs/apk/debug:
+6) Далее в папке /BeautyBar/app/build/outputs/apk/debug:
    - находим файл app-debug.apk
    - переносим на телефон
    - открываем (при необходимости разрешаем в настройках установку из непроверенных источников)
-4) После установки запускаем из меню приложений
+7) После установки запускаем из меню приложений
 
 ## Скриншоты
 <img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/5e836235-5cc2-4df2-b8e8-564475704b3e" /> <img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/389b3ac0-32d9-42d1-9871-eae9489435ae" />
