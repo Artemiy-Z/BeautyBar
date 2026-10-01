@@ -10,13 +10,35 @@ BeautyBar — Android-приложение для управления сало�
 - Управление салоном:
   администратор может добавлять, редактировать и удалять категории услуг,
   услуги и профили мастеров.
-- Аутентификация пользователей, мастеров и администраторов.
+- Аутентификация пользователей и администраторов.
 - Просмотр каталога услуг.
-- Просмотр администратора списка записей.
-- Редактирование мастером личных данных и портфолио работ.
+- Просмотр администратором списка записей.
+- Редактирование администратором портфолио работ мастеров.
 - Запись пользователя к мастеру на выбранную услугу.
 - Редактирование пользователем личных данных.
 - Просмотр пользователем своих записей.
+
+## Скриншоты
+<img width="320" alt="Screenshot_20261001_104525_BeautyBar" src="https://github.com/user-attachments/assets/6240e194-f40e-49a9-b8e5-4f8325ce3d98" />
+<img width="320" alt="Screenshot_20261001_104518_BeautyBar" src="https://github.com/user-attachments/assets/6c390220-5ed9-46db-a98f-603cbe232b69" />
+<img width="320" alt="Screenshot_20261001_112224_BeautyBar" src="https://github.com/user-attachments/assets/62f967f1-49f0-403a-be3d-1b1415b38bb8" />
+<img width="320" alt="Screenshot_20261001_112232_BeautyBar" src="https://github.com/user-attachments/assets/19d0f868-7d5e-4e0e-b2dc-1185e965e4ae" />
+<img width="320" alt="Screenshot_20261001_112220_BeautyBar" src="https://github.com/user-attachments/assets/1f9dd3a5-55e5-4df9-a3b3-0709f9f5b16d" />
+<img width="320" alt="Screenshot_20261001_112242_BeautyBar" src="https://github.com/user-attachments/assets/882fe478-a95f-4229-a202-c8e26eeec4cd" />
+<img width="320" alt="Screenshot_20261001_112313_BeautyBar" src="https://github.com/user-attachments/assets/0ecaacb8-2d96-4524-8a50-78939ebbff18" />
+<img width="320" alt="Screenshot_20261001_112517_BeautyBar" src="https://github.com/user-attachments/assets/9b3de8d3-b857-4bcc-90ef-bb379888ec71" />
+<img width="320" alt="Screenshot_20261001_112510_BeautyBar" src="https://github.com/user-attachments/assets/4df10878-1cf0-4711-935e-3caaf2d854e8" />
+<img width="320" alt="Screenshot_20261001_112524_BeautyBar" src="https://github.com/user-attachments/assets/bceb940d-01e1-4bca-a159-3d2e96eb73f0" />
+<img width="320" alt="Screenshot_20261001_112542_BeautyBar" src="https://github.com/user-attachments/assets/af5e28b5-6e27-4034-8321-21ed1eb80323" />
+<img width="320" alt="Screenshot_20261001_114204_BeautyBar" src="https://github.com/user-attachments/assets/8a5bc7ea-54c7-4a90-aa8e-4676ab5b6de9" />
+<img width="320" alt="Screenshot_20261001_123013_BeautyBar" src="https://github.com/user-attachments/assets/740ac6f0-2f43-4c6b-a143-176cdb962cae" />
+<img width="320" alt="Screenshot_20261001_103118_BeautyBar" src="https://github.com/user-attachments/assets/1e9c4e13-ea67-452d-8bd9-fc6b6a4946ab" />
+<img width="320" alt="Screenshot_20261001_103110_BeautyBar" src="https://github.com/user-attachments/assets/5e11a701-4b30-4f95-bbd6-99e1757096a1" />
+<img width="320" alt="Screenshot_20261001_103122_BeautyBar" src="https://github.com/user-attachments/assets/ec82c9d6-af09-45bc-8551-6dcf275cc88a" />
+<img width="320" alt="Screenshot_20261001_103139_BeautyBar" src="https://github.com/user-attachments/assets/cc3bdf96-7097-4779-9ad1-34fa2879c271" />
+<img width="320" alt="Screenshot_20261001_104504_BeautyBar" src="https://github.com/user-attachments/assets/501bf226-4be2-4731-8c93-4ecd0457557f" />
+<img width="320" alt="Screenshot_20261001_103153_BeautyBar" src="https://github.com/user-attachments/assets/804319ed-4cd5-4fcd-b36a-5428ab696861" />
+<img width="320" alt="Screenshot_20261001_103147_BeautyBar" src="https://github.com/user-attachments/assets/6731d674-755a-41ba-9ea3-56e76a8a131f" />
 
 ## Инструкция по сборке и запуску:
 1) Клонируйте репозиторий:
@@ -91,6 +113,3 @@ BeautyBar — Android-приложение для управления сало�
 > В дальнейшем планируется перенести логику экранов в ViewModel,
 > перейти на Navigation Compose и представить экраны непосредственно
 > как composable destinations.
-
-## Скриншоты
-<img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/5e836235-5cc2-4df2-b8e8-564475704b3e" /> <img width="186" height="438" alt="image" src="https://github.com/user-attachments/assets/389b3ac0-32d9-42d1-9871-eae9489435ae" />
