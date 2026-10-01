@@ -56,7 +56,6 @@ fun CardTitleDescription(
                     Row(
                         modifier = Modifier
                             .padding(10.dp)
-                            .fillMaxHeight()
                     ) {
                         Box(
                             modifier = Modifier

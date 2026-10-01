@@ -6,10 +6,12 @@ import ru.beauty.bar.database.model.BookingInsert
 import ru.beauty.bar.database.model.User
 import ru.beauty.bar.navigation.Screens
 import ru.beauty.bar.navigation.presenter.BasePresenter
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class OrderConfirmPresenter : BasePresenter() {
     override fun onBackPressed() {
@@ -29,13 +31,9 @@ class OrderConfirmPresenter : BasePresenter() {
 
         val fullMills = order.dateMills!!+order.timeMills!!
 
-        val dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+        val sdf = SimpleDateFormat("yyyy-dd-MM HH:mm:ss", Locale.getDefault())
 
-        val instant = Instant.ofEpochMilli(fullMills)
-
-        val date = LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
-
-        val dateFormatted = dtf.format(date)
+        val dateFormatted = sdf.format(fullMills)
 
         val booking = BookingInsert(
             masterId = order.masterCombined!!.master!!.id,

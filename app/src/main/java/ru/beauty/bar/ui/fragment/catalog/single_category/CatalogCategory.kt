@@ -5,6 +5,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.layout.ContentScale
@@ -31,7 +32,7 @@ class CatalogCategory : BaseFragment() {
 
         val category = App.INSTANCE.sharedData.curCategory!!
 
-        val servicesList = remember { mutableListOf<Service>() }
+        val servicesList = remember { mutableStateListOf<Service>() }
 
         val trigger = remember { mutableStateOf(true) }
 

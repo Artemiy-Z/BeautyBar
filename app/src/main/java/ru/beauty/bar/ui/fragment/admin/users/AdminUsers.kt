@@ -3,6 +3,7 @@ package ru.beauty.bar.ui.fragment.admin.users
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import ru.beauty.bar.database.model.User
@@ -16,7 +17,7 @@ class AdminUsers : BaseFragment() {
 
     @Composable
     override fun ComposeFunction() {
-        val userList = remember { mutableListOf<User>() }
+        val userList = remember { mutableStateListOf<User>() }
 
         loadingBackground = MaterialTheme.colorScheme.tertiaryContainer
         loadingColor = Color.White

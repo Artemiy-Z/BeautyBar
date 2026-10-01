@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
@@ -28,7 +29,7 @@ class CatalogEditCategories : BaseFragment() {
             titleText = "Категории услуг",
             onBackButtonClick = { presenter.onBackPressed() },
             content = {
-                val categoriesList = remember { mutableListOf<Category>() }
+                val categoriesList = remember { mutableStateListOf<Category>() }
 
                 val trigger = remember { mutableStateOf(true) }
 

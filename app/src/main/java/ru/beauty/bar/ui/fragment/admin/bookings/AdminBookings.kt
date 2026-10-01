@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,6 +36,9 @@ import ru.beauty.bar.ui.common.CardTitleDescription
 import ru.beauty.bar.ui.fragment.BaseFragment
 import java.text.SimpleDateFormat
 import java.util.Locale
+import androidx.compose.ui.platform.LocalLocale
+import ru.beauty.bar.dataLayer.BookingOrderText
+import ru.beauty.bar.ui.common.BaseScaffoldColumn
 
 class AdminBookings : BaseFragment() {
     override val presenter = AdminBookingsPresenter()
@@ -42,7 +46,7 @@ class AdminBookings : BaseFragment() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun ComposeFunction() {
-        val bookingList = remember { mutableListOf<BookingOrder>() }
+        val bookingList = remember { mutableStateListOf<BookingOrderText>() }
 
         LaunchedEffect(Unit) {
             bookingList.clear()
@@ -53,59 +57,27 @@ class AdminBookings : BaseFragment() {
         loadingColor = Color.White
         loadingBackground = MaterialTheme.colorScheme.tertiaryContainer
 
-        Surface {
-            Scaffold(
-                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                contentWindowInsets = WindowInsets(16.dp, 16.dp, 16.dp, 16.dp),
-                topBar = {
-                    TopAppBar(
-                        title = { Text(text = "Записи пользователей", fontSize = 28.sp) },
-                        navigationIcon = {
-                            IconButton(
-                                onClick = {
-                                    presenter.onBackPressed()
-                                },
-
-                                ) {
-                                Icon(
-                                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                    contentDescription = ""
-                                )
-                            }
-                        })
-                }) { padding ->
-                Box(
-                    modifier = Modifier
-                        .padding(padding)
-                        .verticalScroll(rememberScrollState())
-                        .fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
+        BaseScaffoldColumn(
+            backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+            titleText = "Записи клиентов",
+            baseFragment = this,
+            onBackButtonClick = {presenter.onBackPressed()},
+            content =  {
                         HorizontalDivider(thickness = 16.dp, color = Color.Transparent)
 
-                        bookingList.forEach { item: BookingOrder ->
-                            val fullMills = item.fullMills!!
-                            val sdfDate = SimpleDateFormat("dd/MM/yy", Locale.getDefault())
-                            val dateString = sdfDate.format(fullMills)
-                            val sdfTime = SimpleDateFormat("HH:mm", Locale.getDefault())
-                            val timeString = sdfTime.format(fullMills)
-
+                        bookingList.forEach { item: BookingOrderText ->
                             CardTitleDescription(
                                 backgroundColor = MaterialTheme.colorScheme.tertiary,
-                                name = "Запись на $dateString",
-                                description = item.category?.name + "/" + item.service?.name + "\n" +
-                                        "Мастер: " + item.masterCombined?.master?.name + "\n" +
-                                        "Клиент: " + item.user?.login + "\n" +
-                                        "Время: " + timeString,
+                                name = "Запись на ${item.date}",
+                                description = item.category + "/" + item.service + "\n" +
+                                        "Мастер: " + item.masterName + "\n" +
+                                        "Клиент: " + item.userName + "\n" +
+                                        "Время: " + item.time,
                                 image = ImageBitmap.imageResource(R.drawable.service_collage),
+                                maxLines = 6
                             )
                         }
                     }
-                }
-            }
-        }
+        )
     }
 }

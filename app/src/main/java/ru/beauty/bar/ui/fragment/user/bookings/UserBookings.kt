@@ -1,5 +1,6 @@
 package ru.beauty.bar.ui.fragment.user.bookings
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -41,6 +43,8 @@ import ru.beauty.bar.ui.common.CardTitleDescription
 import ru.beauty.bar.ui.fragment.BaseFragment
 import java.text.SimpleDateFormat
 import java.util.Locale
+import androidx.compose.ui.platform.LocalLocale
+import ru.beauty.bar.dataLayer.BookingOrderText
 
 class UserBookings : BaseFragment() {
     override val presenter = UserBookingsPresenter()
@@ -49,14 +53,16 @@ class UserBookings : BaseFragment() {
     @Preview
     @Composable
     override fun ComposeFunction() {
-        val bookingList = remember { mutableListOf<BookingOrder>() }
+        val bookingList = remember { mutableStateListOf<BookingOrderText>() }
 
         val scope = rememberCoroutineScope()
 
         LaunchedEffect(Unit) {
             bookingList.clear()
 
-            bookingList.addAll(presenter.loadBookings((App.INSTANCE.sharedData.userData as User).id!!))
+            bookingList.addAll(presenter.loadBookings())
+
+            Log.d("List", bookingList.toString())
         }
 
         Surface {
@@ -92,19 +98,14 @@ class UserBookings : BaseFragment() {
                     ) {
                         HorizontalDivider(thickness = 16.dp, color = Color.Transparent)
 
-                        bookingList.forEach { item: BookingOrder ->
-                            val fullMills = item.fullMills!!
-                            val sdfDate = SimpleDateFormat("dd/MM/yy", Locale.getDefault())
-                            val dateString = sdfDate.format(fullMills)
-                            val sdfTime = SimpleDateFormat("HH:mm", Locale.getDefault())
-                            val timeString = sdfTime.format(fullMills)
-
+                        bookingList.forEach { item: BookingOrderText ->
                             CardTitleDescription(
-                                name = "Запись на $dateString",
-                                description = item.category?.name + "/" + item.service?.name + "\n" +
-                                        "Мастер: " + item.masterCombined?.master?.name + "\n" +
-                                        "Время: " + timeString,
+                                name = "Запись на ${item.date}",
+                                description = item.category + "/" + item.service + "\n" +
+                                        "Мастер: " + item.masterName + "\n" +
+                                        "Время: " + item.time,
                                 image = ImageBitmap.imageResource(R.drawable.service_collage),
+                                maxLines = 6,
                                 button = {
                                     Button(
                                         onClick = {
@@ -113,7 +114,7 @@ class UserBookings : BaseFragment() {
                                                 confirmCallback = {
                                                     scope
                                                         .launch {
-                                                            presenter.onCancelBookingPressed(item.bookingId!!)
+                                                            presenter.onCancelBookingPressed(item.bookingId)
                                                         }
                                                 }
                                             )
