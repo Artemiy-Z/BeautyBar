@@ -31,6 +31,7 @@ BeautyBar — Android-приложение для управления сало�
 <img width="320" alt="Screenshot_20261001_112524_BeautyBar" src="https://github.com/user-attachments/assets/bceb940d-01e1-4bca-a159-3d2e96eb73f0" />
 <img width="320" alt="Screenshot_20261001_112542_BeautyBar" src="https://github.com/user-attachments/assets/af5e28b5-6e27-4034-8321-21ed1eb80323" />
 <img width="320" alt="Screenshot_20261001_114204_BeautyBar" src="https://github.com/user-attachments/assets/8a5bc7ea-54c7-4a90-aa8e-4676ab5b6de9" />
+<img width="320" alt="Screenshot_20261001_173033_BeautyBar" src="https://github.com/user-attachments/assets/78a65616-eec1-4f30-bad5-0c9376bb0211" />
 <img width="320" alt="Screenshot_20261001_123013_BeautyBar" src="https://github.com/user-attachments/assets/740ac6f0-2f43-4c6b-a143-176cdb962cae" />
 <img width="320" alt="Screenshot_20261001_103118_BeautyBar" src="https://github.com/user-attachments/assets/1e9c4e13-ea67-452d-8bd9-fc6b6a4946ab" />
 <img width="320" alt="Screenshot_20261001_103110_BeautyBar" src="https://github.com/user-attachments/assets/5e11a701-4b30-4f95-bbd6-99e1757096a1" />
@@ -39,6 +40,7 @@ BeautyBar — Android-приложение для управления сало�
 <img width="320" alt="Screenshot_20261001_104504_BeautyBar" src="https://github.com/user-attachments/assets/501bf226-4be2-4731-8c93-4ecd0457557f" />
 <img width="320" alt="Screenshot_20261001_103153_BeautyBar" src="https://github.com/user-attachments/assets/804319ed-4cd5-4fcd-b36a-5428ab696861" />
 <img width="320" alt="Screenshot_20261001_103147_BeautyBar" src="https://github.com/user-attachments/assets/6731d674-755a-41ba-9ea3-56e76a8a131f" />
+<img width="320" alt="Screenshot_20261001_173009_BeautyBar" src="https://github.com/user-attachments/assets/0c32f055-3633-4b28-b06e-6e518d67bf7a" />
 
 ## Инструкция по сборке и запуску:
 1) Клонируйте репозиторий:
